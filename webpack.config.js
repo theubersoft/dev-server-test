@@ -27,7 +27,13 @@ const clientConfig = {
     new HtmlWebpackPlugin({
       template: './client/main.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        HOME: JSON.stringify(process.env.HOME)
+      }
+    })
   ],
   resolve: {
     extensions: ['*', '.js']
